@@ -18,6 +18,7 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
+        DataContext="{StaticResource SuplierVM}"
         x:Name="window"
         
         Title="Nhà cung cấp" Height="500" Width="700">
@@ -41,37 +42,37 @@
             <materialDesign:Card Grid.Row="0" Margin="5">
                 <WrapPanel Margin="0 0 0 10">
                     <TextBox
-                        Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"
+                        Text="{Binding displayName}"
                         Margin="5 5 15 5"
                         materialDesign:HintAssist.Hint="Tên nhà cung cấp"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         VerticalAlignment="Center" />
                     <TextBox
-                        Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"
+                        Text="{Binding address}"
                         Margin="5 5 15 5"
                         materialDesign:HintAssist.Hint="Địa chỉ"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         VerticalAlignment="Center" />
                     <TextBox
-                        Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"
+                        Text="{Binding phone}"
                         Margin="5 5 15 5"
                         materialDesign:HintAssist.Hint="Điện thoại"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         VerticalAlignment="Center" />
                     <TextBox
-                        Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"
+                        Text="{Binding email}"
                         Margin="5 5 15 5"
                         materialDesign:HintAssist.Hint="Email"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         VerticalAlignment="Center" />
                     <TextBox
-                        Text="{Binding MoreInfo, UpdateSourceTrigger=PropertyChanged}"
+                        Text="{Binding moreInfo}"
                         Margin="5 5 15 5"
                         materialDesign:HintAssist.Hint="Thông tin thêm"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         VerticalAlignment="Center" />
                     <DatePicker
-                        SelectedDate="{Binding ContractDate, UpdateSourceTrigger=PropertyChanged}"
+                        SelectedDate="{Binding contractDate, StringFormat='dd/MM/yyyy'}"
                         Width="100"
                         Margin="5 5 15 5"
                         materialDesign:HintAssist.Hint="Ngày hợp tác"
@@ -89,7 +90,10 @@
 
             <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode= OneWayToSource}">
+                    <ListView ItemsSource="{Binding suplierList}" 
+                              SelectedItem="{
+                        Binding selectedItem,
+                        Mode=OneWayToSource}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" />
