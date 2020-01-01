@@ -102,7 +102,7 @@
                                 <GridViewColumn Header="Điện thoại" DisplayMemberBinding="{Binding Phone}" />
                                 <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" />
                                 <GridViewColumn Header="Thông tin thêm" DisplayMemberBinding="{Binding MoreInfo}" />
-                                <GridViewColumn Header="Ngày hợp tác" DisplayMemberBinding="{Binding ContractDate}" />
+                                <GridViewColumn Header="Ngày hợp tác" DisplayMemberBinding="{Binding ContractDate, StringFormat='dd/MM/yyyy'}" />
                             </GridView>
                         </ListView.View>
                     </ListView>

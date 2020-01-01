@@ -18,6 +18,8 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
+        
+        DataContext="{StaticResource ObjectVM}"
         x:Name="window"
         
         Title="Vật tư" Height="500" Width="700">
@@ -41,21 +43,21 @@
             <materialDesign:Card Grid.Row="0" Margin="5">
                 <WrapPanel Margin="0 0 0 10">
                     <TextBox
-                        Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"
+                        Text="{Binding displayName, UpdateSourceTrigger=PropertyChanged}"
                         Margin="5 5 15 5"
                         materialDesign:HintAssist.Hint="Tên vật tư"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         VerticalAlignment="Center" />
-                    <ComboBox Margin="5 5 15 5" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Đơn vị đo" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
-                    <ComboBox Margin="5 5 15 5" ItemsSource="{Binding Suplier}" SelectedItem="{Binding SelectedSuplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Nhà cung cấp" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
+                    <ComboBox DisplayMemberPath="DisplayName" Margin="5 5 15 5" ItemsSource="{Binding unitList}" SelectedItem="{Binding selectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Đơn vị đo" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
+                    <ComboBox DisplayMemberPath="DisplayName" Margin="5 5 15 5" ItemsSource="{Binding suplierList}" SelectedItem="{Binding selectedSuplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Nhà cung cấp" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
                     <TextBox
-                        Text="{Binding QRCode, UpdateSourceTrigger=PropertyChanged}"
+                        Text="{Binding qRCode, UpdateSourceTrigger=PropertyChanged}"
                         Margin="5 5 15 5"
                         materialDesign:HintAssist.Hint="QRCode"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         VerticalAlignment="Center" />
                     <TextBox
-                        Text="{Binding BarCode, UpdateSourceTrigger=PropertyChanged}"
+                        Text="{Binding barCode, UpdateSourceTrigger=PropertyChanged}"
                         Margin="5 5 15 5"
                         materialDesign:HintAssist.Hint="BarCode"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -74,10 +76,9 @@
 
             <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode= OneWayToSource}">
+                    <ListView ItemsSource="{Binding objectList}" SelectedItem="{Binding selectedItem, Mode= OneWayToSource}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" />
                                 <GridViewColumn Header="Tên vật tư" DisplayMemberBinding="{Binding DisplayName}" />
                                 <GridViewColumn Header="Đơn vị đo" DisplayMemberBinding="{Binding Unit.DisplayName}" />
                                 <GridViewColumn Header="Nhà cung cấp" DisplayMemberBinding="{Binding Suplier.DisplayName}" />
